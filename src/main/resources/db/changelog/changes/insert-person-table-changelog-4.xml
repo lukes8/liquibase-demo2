@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="changes/create-person-table-changelog-1.xml" relativeToChangelogFile="true"/>
-    <include file="changes/insert-person-table-changelog-2.xml" relativeToChangelogFile="true"/>
-    <include file="changes/update-person-table-precondition-3.xml" relativeToChangelogFile="true"/>
-    <include file="changes/insert-person-table-changelog-4.xml" relativeToChangelogFile="true"/>
+    <changeSet author="admin" id="4">
+        <insert tableName="person">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Robert"/>
+            <column name="address" value="USA"/>
+        </insert>
+        <rollback>
+            delete from person where id=2;
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
