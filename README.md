@@ -13,5 +13,5 @@ type '**clean package -DskipTests**' in the same directory that the pom.xml-file
 
 # Additional stuff
 ### Useful commands, tips
-mvn liquibase:generateChangeLog
+mvn liquibase:generateChangeLog<br>
 mvn liquibase:rollback -Dliquibase.rollbackCount=1
